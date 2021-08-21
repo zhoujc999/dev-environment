@@ -9,6 +9,7 @@ cleanup() {
 trap 'true' SIGTERM
 
 # Execute command
+/home/$USER/docker_files/initialization.py
 fish
 
 # Cleanup
