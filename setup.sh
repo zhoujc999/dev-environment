@@ -1,13 +1,14 @@
-# Script for installing Linux packages
+#!/usr/bin/env bash
+
 apt-get update \
 && apt-get install -y \
   sudo \
-  tmux \
-  git \
   curl \
+  git \
+  vim \
+  tmux \
   fd-find \
   ripgrep \
-  vim \
   bat \
   exa \
   fzf \
@@ -19,12 +20,6 @@ apt-get update \
 && apt-add-repository ppa:fish-shell/release-3 \
 && apt-get update \
 && apt-get install -y fish \
-&& curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n \
-&& bash n lts \
 && rm -rf /var/lib/apt/lists/* \
 && python3 -m pip install PyGithub \
-&& sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
-
-
-
 

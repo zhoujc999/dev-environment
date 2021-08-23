@@ -1,10 +1,11 @@
 FROM ubuntu:groovy
-ARG USER="zhoujc999"
 ENV GITHUB_TOKEN=
+ENV DOCKER_USER="zhoujc999"
+ENV DOCKER_PASSWORD="password"
+ENV NAME="Jingchao Zhou"
+ENV EMAIL="zhoujc999@gmail.com"
 ARG DEBIAN_FRONTEND="noninteractive"
-RUN ["/bin/bash", "-c", "useradd --create-home --shell /usr/bin/fish $USER"]
-COPY --chown=$USER [".", "/home/$USER/docker_files/"]
-RUN ["/bin/bash", "-c", "/home/$USER/docker_files/install.sh"]
-USER $USER
-WORKDIR /home/$USER
-ENTRYPOINT ["/bin/bash", "-c", "$PWD/docker_files/entrypoint.sh"]
+COPY --chown=$USER [".", "/home/$DOCKER_USER/.docker_files/"]
+RUN ["/bin/bash", "-c", "/home/$DOCKER_USER/.docker_files/setup.sh"]
+RUN ["/bin/bash", "-c", "/home/$DOCKER_USER/.docker_files/setup.py"]
+ENTRYPOINT ["/bin/bash", "-c", "/home/$DOCKER_USER/.docker_files/entrypoint.fish"]
