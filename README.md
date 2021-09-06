@@ -5,4 +5,5 @@
 2. Figure out local hosts and ports
 
 `docker run -it --rm -e GITHUB_TOKEN= test_image`
+
 `docker build -t test_image .`
