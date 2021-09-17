@@ -1,15 +1,27 @@
+from collections import namedtuple
 import envs
+
+HTTPPackage = namedtuple("HTTPPackage", "url commands")
+DownloadFile = namedtuple("DownloadFile", "url file_name")
 
 HOME_DIR = f"/home/{envs.DOCKER_USER}"
 
-N_FILE_NAME = f"{HOME_DIR}/bin/n"
-STARSHIP_FILE_NAME = f"{HOME_DIR}/bin/starship"
-VIM_PLUG_FILE_NAME = f"{HOME_DIR}/.vim/autoload/plug.vim"
+pip = HTTPPackage("https://bootstrap.pypa.io/get-pip.py",
+                  ["python3 {file_name}"])
+n = HTTPPackage("https://raw.githubusercontent.com/tj/n/master/bin/n",
+                ["bash {file_name} lts"])
+starship = HTTPPackage("https://starship.rs/install.sh",
+                       ["sh {file_name} --yes"])
 
-N_URL = "https://raw.githubusercontent.com/tj/n/master/bin/n"
-STARSHIP_URL = "https://starship.rs/install.sh"
-VIM_PLUG_URL = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+HTTP_PACKAGES = [pip,
+                 n,
+                 starship]
 
+vim_plug = DownloadFile("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
+                        f"{HOME_DIR}/.vim/autoload/plug.vim")
+
+
+DOWNLOAD_FILES = [vim_plug]
 
 SSH_KEY_FILE_NAME = f"{HOME_DIR}/.ssh/id_ed25519"
 SSH_KEY_TYPE = "ed25519"

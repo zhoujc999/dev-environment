@@ -1,0 +1,123 @@
+format = """
+$username\
+$shlvl\
+$directory\
+$git_branch\
+$git_state\
+$docker_context\
+$package\
+$python\
+$custom\
+$cmd_duration\
+$shell\
+$line_break\
+$jobs\
+$time\
+$status\
+$character
+"""
+
+add_newline = true
+
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
+[cmake]
+disabled = true
+
+[cmd_duration]
+min_time = 30000
+format = "[🕒 $duration](bold yellow) "
+
+[conda]
+disabled = true
+
+[crystal]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[directory]
+truncation_length = 5
+
+[docker_context]
+format = "via [🐋 $context](blue bold)"
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[env_var]
+disabled = true
+
+[erlang]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[git_branch]
+truncation_symbol = ""
+
+[git_commit]
+disabled = true
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
+[git_status]
+disabled = true
+
+[golang]
+disabled = true
+
+[helm]
+disabled = true
+
+[hostname]
+disabled = true
+
+[java]
+disabled = true
+
+[jobs]
+symbol = "+ "
+
+[julia]
+disabled = true
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[shell]
+format = "with $indicator"
+unknown_indicator = ""
+disabled = false
+
+[time]
+format = "[$time]($style) "
+time_format = "%R"
+use_12hr = true
+disabled = false
+
+[shlvl]
+disabled = false
+threshold = 3

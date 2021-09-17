@@ -12,14 +12,13 @@ apt-get update \
   bat \
   exa \
   fzf \
-  python3-pip \
+  python3 \
   software-properties-common \
   locales \
+&& apt-get install -y fish \
 && locale-gen en_US.UTF-8 \
 && update-locale LANG=en_US.UTF-8 \
-&& apt-add-repository ppa:fish-shell/release-3 \
-&& apt-get update \
-&& apt-get install -y fish \
-&& rm -rf /var/lib/apt/lists/* \
-&& python3 -m pip install PyGithub \
+&& rm -rf /var/lib/apt/lists/*
+# && add-apt-repository ppa:fish-shell/release-3 -y \
+# && apt-get update \
 
