@@ -45,6 +45,10 @@ def write_text(file_name, string):
 
 
 def move_file_with_replacements(source, destination, replacements=None):
+    """
+    Move file and replace placeholders with entries in replacements
+    dictionary.
+    """
     with open(source) as source_file:
         source_string = source_file.read()
         if replacements:
@@ -53,17 +57,25 @@ def move_file_with_replacements(source, destination, replacements=None):
 
 
 def add_user(username, password):
+    print(f"Adding user: {username}")
     shell_run(f"useradd -p {crypt(password)} {username}", silent=True)
     shell_run(f"usermod -a -G sudo {username}", silent=True)
 
 
-def upload_ssh_public_key(gh_client, ssh_key_file_name, ssh_key_name):
+def upload_ssh_public_key(gh_client, ssh_key_name, ssh_key_file_name):
+    print("Uploading SSH key to GitHub...")
     with open(f"{ssh_key_file_name}.pub", "r") as ssh_key_file:
         ssh_key = ssh_key_file.read()
-    gh_user = gh_client.get_user().create_key(ssh_key_name, ssh_key)
+    key_info = gh_client.users.create_public_ssh_key_for_authenticated(
+        ssh_key_name, ssh_key)
+    return f"{key_info.id}"
 
+def delete_ssh_public_key(gh_client, key_id):
+    print("Deleting SSH key from GitHub...")
+    gh_client.users.delete_public_ssh_key_for_authenticated(key_id)
 
 def generate_ssh_key_pair(ssh_key_type, email, ssh_key_file_name):
+    print("Generating SSH key...")
     make_parent_dirs(ssh_key_file_name)
     shell_run(f"ssh-keygen -t {ssh_key_type} -C \"{email}\" "
               f"-P \"\" -f \"{ssh_key_file_name}\"")
