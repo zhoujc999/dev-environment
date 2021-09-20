@@ -5,5 +5,5 @@
 
 `docker build -t dev_image .`
 
-`docker run -it --rm -e GITHUB_TOKEN= dev_image`
+`docker run -it --rm -p 55555:55555 -e GITHUB_TOKEN= dev_image`
 
