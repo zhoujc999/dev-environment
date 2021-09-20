@@ -30,6 +30,6 @@ function rm --wraps rm
     command rm -I $argv
 end
 
-contains /home/$USER/bin $fish_user_paths; or set -Ua fish_user_paths /home/$USER/bin/
+contains /home/$USER/.local/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/.local/bin/
 
 starship init fish | source
