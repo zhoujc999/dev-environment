@@ -1,9 +1,9 @@
 # dev_environment
 
 
-1. TemporaryEnv
-2. Figure out local hosts and ports
+1. Figure out local hosts and ports
 
-`docker run -it --rm -e GITHUB_TOKEN= test_image`
+`docker build -t dev_image .`
 
-`docker build -t test_image .`
+`docker run -it --rm -e GITHUB_TOKEN= dev_image`
+
