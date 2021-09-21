@@ -4,14 +4,11 @@ from ghapi.all import GhApi
 import envs
 import constants
 from pathlib import Path
-from utils import shell_run, add_user, \
-    move_file_with_replacements, generate_ssh_key_pair, \
-    upload_ssh_public_key, write_text
-
-
-
-
-
+from utils import shell_run
+from utils import move_file_with_replacements
+from utils import maybe_add_user
+from utils import maybe_generate_ssh_key_pair
+from utils import maybe_upload_ssh_public_key
 
 
 def _move_configs():
@@ -30,18 +27,18 @@ def _move_configs():
 
 def main():
     gh_client = GhApi(token=envs.GITHUB_TOKEN)
-    generate_ssh_key_pair(constants.SSH_KEY_TYPE, envs.EMAIL,
+    maybe_generate_ssh_key_pair(constants.SSH_KEY_TYPE, envs.EMAIL,
                           constants.SSH_KEY_FILE_NAME)
-    ssh_key_id = upload_ssh_public_key(gh_client, constants.SSH_KEY_NAME,
-                                       constants.SSH_KEY_FILE_NAME)
-    write_text(constants.SSH_KEY_ID_FILE_NAME, ssh_key_id)
+    ssh_key_id = maybe_upload_ssh_public_key(gh_client, constants.SSH_KEY_NAME,
+                                             constants.SSH_KEY_FILE_NAME,
+                                             constants.SSH_KEY_ID_FILE_NAME)
     #  git_clone(constants.CONFIGS_URL, constants.CONFIGS_DIR, constants.SSH_KEY_FILE_NAME)
 
     _move_configs()
 
-    # shell_run("vim -E -c \"PlugInstall\" -c \"qall\"")
+    shell_run("vim -c 'PlugInstall' -c 'qall!'")
 
-    add_user(envs.DOCKER_USER, envs.DOCKER_PASSWORD)
+    maybe_add_user(envs.DOCKER_USER, envs.DOCKER_PASSWORD)
 
 
 

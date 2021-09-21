@@ -1,11 +1,20 @@
-from subprocess import run, PIPE, STDOUT
+from crypt import crypt
 from os import environ
+from pwd import getpwnam
+from pathlib import Path
+from subprocess import run, PIPE, STDOUT
 from shlex import split
 from urllib.request import urlopen, Request
-from pathlib import Path
-from crypt import crypt
 from tempfile import NamedTemporaryFile
 
+
+def user_exists(username):
+    try:
+        getpwnam(username)
+    except KeyError:
+        return False
+    else:
+        return True
 
 def shell_run(shell_command, silent=False):
     if not silent:
@@ -56,25 +65,45 @@ def move_file_with_replacements(source, destination, replacements=None):
         write_text(destination, source_string)
 
 
-def add_user(username, password):
+def maybe_add_user(username, password):
+    if user_exists(username):
+        print(f"User: {username} exists. Not adding user...")
+        return
+
     print(f"Adding user: {username}")
     shell_run(f"useradd -p {crypt(password)} {username}", silent=True)
     shell_run(f"usermod -a -G sudo {username}", silent=True)
 
 
-def upload_ssh_public_key(gh_client, ssh_key_name, ssh_key_file_name):
+def maybe_upload_ssh_public_key(gh_client, ssh_key_name,
+                                ssh_key_file_name,
+                                ssh_key_id_file_name):
+    if Path(ssh_key_id_file_name).is_file():
+        print("SSH key uploaded to GitHub. Not uploading SSH key...")
+        return
+
     print("Uploading SSH key to GitHub...")
     with open(f"{ssh_key_file_name}.pub", "r") as ssh_key_file:
         ssh_key = ssh_key_file.read()
     key_info = gh_client.users.create_public_ssh_key_for_authenticated(
         ssh_key_name, ssh_key)
-    return f"{key_info.id}"
+    write_text(ssh_key_id_file_name, f"{key_info.id}")
 
-def delete_ssh_public_key(gh_client, key_id):
+def maybe_delete_ssh_public_key(gh_client, ssh_key_id_file_name):
+    if not Path(ssh_key_id_file_name).is_file():
+        print("SSH key not uploaded to GitHub. Not deleting SSH key...")
+        return
+
     print("Deleting SSH key from GitHub...")
-    gh_client.users.delete_public_ssh_key_for_authenticated(key_id)
+    with open(ssh_key_id_file_name) as ssh_key_id_file:
+        ssh_key_id = ssh_key_id_file.read()
+        gh_client.users.delete_public_ssh_key_for_authenticated(ssh_key_id)
 
-def generate_ssh_key_pair(ssh_key_type, email, ssh_key_file_name):
+def maybe_generate_ssh_key_pair(ssh_key_type, email, ssh_key_file_name):
+    if Path(ssh_key_file_name).is_file():
+        print("SSH key found. Not generating SSH key...")
+        return
+
     print("Generating SSH key...")
     make_parent_dirs(ssh_key_file_name)
     shell_run(f"ssh-keygen -t {ssh_key_type} -C \"{email}\" "
@@ -82,7 +111,8 @@ def generate_ssh_key_pair(ssh_key_type, email, ssh_key_file_name):
 
 
 def git_clone(repo_url, repo_dir, ssh_key_file_name):
-    shell_run(f"git clone {repo_url} {repo_dir} --config core.sshCommand=\"ssh -i {ssh_key_file_name}\"")
+    shell_run(f"git clone {repo_url} {repo_dir} "
+              f"--config core.sshCommand=\"ssh -i {ssh_key_file_name}\"")
 
 
 class TemporaryEnv:
