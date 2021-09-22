@@ -98,6 +98,7 @@ def maybe_delete_ssh_public_key(gh_client, ssh_key_id_file_name):
     with open(ssh_key_id_file_name) as ssh_key_id_file:
         ssh_key_id = ssh_key_id_file.read()
         gh_client.users.delete_public_ssh_key_for_authenticated(ssh_key_id)
+    Path(ssh_key_id_file_name).unlink()
 
 def maybe_generate_ssh_key_pair(ssh_key_type, email, ssh_key_file_name):
     if Path(ssh_key_file_name).is_file():
