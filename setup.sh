@@ -19,6 +19,3 @@ apt-get update \
 && locale-gen en_US.UTF-8 \
 && update-locale LANG=en_US.UTF-8 \
 && rm -rf /var/lib/apt/lists/*
-# && add-apt-repository ppa:fish-shell/release-3 -y \
-# && apt-get update \
-

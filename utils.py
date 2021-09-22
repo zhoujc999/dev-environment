@@ -16,6 +16,7 @@ def user_exists(username):
     else:
         return True
 
+
 def shell_run(shell_command, silent=False):
     if not silent:
         print(shell_command)
@@ -29,6 +30,7 @@ def shell_run(shell_command, silent=False):
 
 def http_download(download_file_info):
     download_file(download_file_info.url, download_file_info.file_name)
+
 
 def download_file(url, file_name):
     request = Request(url, headers={"User-Agent": "curl/7.64.1"})
@@ -89,6 +91,7 @@ def maybe_upload_ssh_public_key(gh_client, ssh_key_name,
         ssh_key_name, ssh_key)
     write_text(ssh_key_id_file_name, f"{key_info.id}")
 
+
 def maybe_delete_ssh_public_key(gh_client, ssh_key_id_file_name):
     if not Path(ssh_key_id_file_name).is_file():
         print("SSH key not uploaded to GitHub. Not deleting SSH key...")
@@ -99,6 +102,7 @@ def maybe_delete_ssh_public_key(gh_client, ssh_key_id_file_name):
         ssh_key_id = ssh_key_id_file.read()
         gh_client.users.delete_public_ssh_key_for_authenticated(ssh_key_id)
     Path(ssh_key_id_file_name).unlink()
+
 
 def maybe_generate_ssh_key_pair(ssh_key_type, email, ssh_key_file_name):
     if Path(ssh_key_file_name).is_file():
@@ -126,4 +130,3 @@ class TemporaryEnv:
 
     def __exit__(self):
         del environ[self.name]
-
