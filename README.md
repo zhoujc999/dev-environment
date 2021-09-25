@@ -1,12 +1,19 @@
 # dev_environment
 
 
-1. Figure out local hosts and ports
+Figure out: Run command as user
 
-`docker build -t dev .`
+1. To build the image:
+Run `docker build -t dev .`
 
-`docker run -it --rm -p 55555:55555 -e GITHUB_TOKEN=<github-token> dev`
+2(a). To pass GitHub token to the container:
+Run `docker run -it --rm -p 55555:55555 -e GITHUB_TOKEN=<github-token> dev`
 
-`docker start <container-id>`
+2(b). To authenticate via `https://github.com/login/device`:
+Run `docker run -it --rm -p 55555:55555 dev`
 
-`docker attach <container-id>`
+2(c). To remove container after stopping:
+Run `docker run -it -p 55555:55555 dev`
+
+3. To start a stopped container:
+Run `docker start <container-id>` followed by `docker attach <container-id>`
