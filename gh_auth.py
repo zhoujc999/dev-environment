@@ -21,7 +21,7 @@ def initialize_gh_client(env_gh_token, gh_client_id, gh_token_file_name,
     print(f"Visit {gh_auth.verification_uri} in your browser.\n"
           f"Paste the following code when prompted.\n"
           f"One-time code: \x1b[33m{gh_auth.user_code}\x1b[m")
-    print("Waiting for authorization...", end="")
+    print("Waiting for authorization...")
     gh_token = gh_auth.wait(n_polls=gh_auth_n_polls)
 
     if not gh_token:

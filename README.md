@@ -20,5 +20,5 @@ Run `docker run -it --rm -p 55555:55555 dev`
 Run `docker run -it -p 55555:55555 dev`
 
 3. To start a stopped container:
-4. 
+
 Run `docker start <container-id>` followed by `docker attach <container-id>`

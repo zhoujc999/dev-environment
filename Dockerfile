@@ -6,7 +6,7 @@ ENV NAME="Jingchao Zhou"
 ENV EMAIL="zhoujc999@gmail.com"
 ENV TZ="America/Los_Angeles"
 ARG DEBIAN_FRONTEND="noninteractive"
-COPY --chown=$USER [".", "/home/$DOCKER_USER/.docker_files/"]
+COPY [".", "/home/$DOCKER_USER/.docker_files/"]
 RUN ["/bin/bash", "-c", "/home/$DOCKER_USER/.docker_files/setup.sh"]
 RUN ["/bin/bash", "-c", "/home/$DOCKER_USER/.docker_files/setup.py"]
 ENTRYPOINT ["/bin/bash", "-c", "/home/$DOCKER_USER/.docker_files/entrypoint.fish"]
