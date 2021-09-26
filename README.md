@@ -1,11 +1,11 @@
 # dev_environment
 
 1. Environment variables to set:
-  1. `GITHUB_TOKEN`
-  2. `DOCKER_USER`
-  3. `DOCKER_PASSWORD`
-  4. `NAME`
-  5. `EMAIL`
+    1 `GITHUB_TOKEN`
+    2. `DOCKER_USER`
+    3. `DOCKER_PASSWORD`
+    4. `NAME`
+    5. `EMAIL`
 
 2. To build the image:
 
@@ -24,8 +24,8 @@ Run `docker run -it --rm -p 55555:55555 dev`
 Run `docker run -it -p 55555:55555 dev`
 
 4. To start a stopped container:
-  1. Run `docker start <container-id>`
-  2. Run `docker attach <container-id>`
+    1. Run `docker start <container-id>`
+    2. Run `docker attach <container-id>`
 
 TODO: Figure out venv
 
