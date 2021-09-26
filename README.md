@@ -1,24 +1,31 @@
 # dev_environment
 
+1. Environment variables to set:
+  1. `GITHUB_TOKEN`
+  2. `DOCKER_USER`
+  3. `DOCKER_PASSWORD`
+  4. `NAME`
+  5. `EMAIL`
 
-Figure out: Run command as user
-
-1. To build the image:
+2. To build the image:
 
 Run `docker build -t dev .`
 
-2(a). To pass GitHub token to the container:
+3(a). To pass GitHub token to the container:
 
 Run `docker run -it --rm -p 55555:55555 -e GITHUB_TOKEN=<github-token> dev`
 
-2(b). To authenticate via `https://github.com/login/device`:
+3(b). To authenticate via `https://github.com/login/device`:
 
 Run `docker run -it --rm -p 55555:55555 dev`
 
-2(c). To remove container after stopping:
+3(c). To remove container after stopping:
 
 Run `docker run -it -p 55555:55555 dev`
 
-3. To start a stopped container:
+4. To start a stopped container:
+  1. Run `docker start <container-id>`
+  2. Run `docker attach <container-id>`
 
-Run `docker start <container-id>` followed by `docker attach <container-id>`
+TODO: Figure out venv
+
