@@ -1,7 +1,7 @@
 # dev_environment
 
 1. Environment variables to set:
-    1 `GITHUB_TOKEN`
+    1. `GITHUB_TOKEN`
     2. `DOCKER_USER`
     3. `DOCKER_PASSWORD`
     4. `NAME`
