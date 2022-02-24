@@ -26,8 +26,6 @@ def main():
         move_file_with_replacements(move.source, move.destination,
                                     move.replacements)
 
-    shell_run("vim -c 'PlugInstall' -c 'qall!'")
-
     maybe_add_user(envs.DOCKER_USER, envs.DOCKER_PASSWORD)
 
 

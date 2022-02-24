@@ -5,7 +5,7 @@ apt-get update \
   sudo \
   curl \
   git \
-  vim \
+  neovim \
   tmux \
   fd-find \
   ripgrep \

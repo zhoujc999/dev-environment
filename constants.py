@@ -26,7 +26,7 @@ HTTP_PACKAGES = [
 
 # Download Files
 VIM_PLUG = DownloadFile("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
-                        f"{HOME_DIR}/.vim/autoload/plug.vim")
+                        f"{HOME_DIR}/.local/share/nvim/site/autoload/plug.vim")
 
 DOWNLOAD_FILES = [VIM_PLUG]
 
@@ -34,9 +34,9 @@ GIT_CONFIG = MoveWithReplacements(f"{CONFIGS_DIR}/.gitconfig",
                                   f"{HOME_DIR}/.gitconfig",
                                   {"email": envs.EMAIL, "name": envs.NAME})
 
-VIMRC = MoveWithReplacements(f"{CONFIGS_DIR}/.vimrc",
-                             f"{HOME_DIR}/.vimrc",
-                             None)
+INIT_VIM = MoveWithReplacements(f"{CONFIGS_DIR}/init.vim",
+                                f"{HOME_DIR}/.config/nvim/init.vim",
+                                None)
 
 FISH_CONFIG = MoveWithReplacements(f"{CONFIGS_DIR}/config.fish",
                                    f"{HOME_DIR}/.config/fish/config.fish",
@@ -49,7 +49,7 @@ STARSHIP_CONFIG = MoveWithReplacements(f"{CONFIGS_DIR}/starship.toml",
 
 MOVE_WITH_REPLACEMENTS = [
     GIT_CONFIG,
-    VIMRC,
+    INIT_VIM,
     FISH_CONFIG,
     STARSHIP_CONFIG
 ]
