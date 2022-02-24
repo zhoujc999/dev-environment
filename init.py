@@ -3,7 +3,6 @@
 import envs
 import constants
 from gh_auth import initialize_gh_client
-from pathlib import Path
 from utils import shell_run
 from utils import move_file_with_replacements
 from utils import maybe_add_user
