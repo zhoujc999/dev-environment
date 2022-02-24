@@ -11,7 +11,7 @@
    Run `docker build -t dev .`
 
 3. Start the container:
-    * Run `docker run -it --rm -p 55555:55555 dev`
+    * Run `docker run -it --rm -p 55553:55553 dev`
 
 4. To start a stopped container:
     1. Run `docker start <container-id>`
