@@ -2,6 +2,10 @@ function ls --wraps exa
     command exa -la --color=auto --group-directories-first $argv
 end
 
+function vim --wraps nvim
+    command nvim $argv
+end
+
 function cat --wraps batcat
     command batcat $argv
 end
