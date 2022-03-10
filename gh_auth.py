@@ -18,7 +18,7 @@ def initialize_gh_client(env_gh_token, gh_client_id, gh_token_file_name,
         return GhApi(token=file_gh_token)
 
     gh_auth = GhDeviceAuth(gh_client_id, gh_scope)
-    print(f"Visit {gh_auth.verification_uri} in your browser.\n"
+    print(f"Visit \x1b[33m{gh_auth.verification_uri}\x1b[m in your browser.\n"
           f"Paste the following code when prompted.\n"
           f"One-time code: \x1b[33m{gh_auth.user_code}\x1b[m")
     print("Waiting for authorization...")
