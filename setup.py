@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from utils import shell_run, http_install, http_download
-from tempfile import NamedTemporaryFile
 import constants
 import envs
 
