@@ -27,7 +27,7 @@
     date = relative
     graphColors = black,red,green
 [format]
-    pretty = format:%C(auto,yellow)%h%C(auto,magenta)% %C(auto,blue)%>(16,trunc)%ad %C(auto,green)%<(16,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
+    pretty = format:%C(auto,yellow)%h %C(auto,blue)%>(16,trunc)%ad %C(auto,green)%<(16,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
 [filter "lfs"]
     process = git-lfs filter-process
     required = true
