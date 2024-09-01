@@ -11,15 +11,15 @@ DOCKER_FILES_DIR = f"{HOME_DIR}/.docker_files"
 CONFIGS_DIR = f"{DOCKER_FILES_DIR}/configs"
 
 # HTTP Packages
-PIP = HTTPPackage("https://bootstrap.pypa.io/get-pip.py",
-                  ["python3 {file_name}"])
+UV = HTTPPackage("https://astral.sh/uv/install.sh",
+                  ["sh {file_name}"])
 N = HTTPPackage("https://raw.githubusercontent.com/tj/n/master/bin/n",
                 ["bash {file_name} lts"])
 STARSHIP = HTTPPackage("https://starship.rs/install.sh",
                        ["sh {file_name} --yes"])
 
 HTTP_PACKAGES = [
-    PIP,
+    UV,
     N,
     STARSHIP
 ]

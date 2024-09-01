@@ -1,4 +1,4 @@
-FROM ubuntu:hirsute
+FROM ubuntu:noble
 ENV GITHUB_TOKEN=
 ENV DOCKER_USER="zhoujc999"
 ENV DOCKER_PASSWORD="password"

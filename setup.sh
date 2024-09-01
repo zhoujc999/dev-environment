@@ -10,7 +10,7 @@ apt-get update \
   fd-find \
   ripgrep \
   bat \
-  exa \
+  eza \
   fzf \
   python3 \
   software-properties-common \
