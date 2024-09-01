@@ -2,7 +2,6 @@
 
 import constants
 import envs
-from gh_auth import initialize_gh_client
 from utils import maybe_delete_ssh_public_key
 
 
