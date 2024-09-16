@@ -1,5 +1,5 @@
 function ls --wraps exa
-    command exa -la --color=auto --group-directories-first $argv
+    command eza -la --color=auto --group-directories-first $argv
 end
 
 function vim --wraps nvim
