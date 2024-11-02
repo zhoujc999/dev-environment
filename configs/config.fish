@@ -1,4 +1,4 @@
-function ls --wraps exa
+function ls --wraps eza
     command eza -la --color=auto --group-directories-first $argv
 end
 
