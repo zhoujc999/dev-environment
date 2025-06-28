@@ -1,10 +1,15 @@
 [user]
     email = {email}
     name = {name}
+[branch]
+    sort = -committerdate
 [core]
     editor = vim
 [diff]
     algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
 [color]
     ui = auto
 [color "branch"]
@@ -21,15 +26,38 @@
     added = green bold
     changed = yellow bold
     untracked = red bold
-[merge]
-    conflictstyle = diff3
-[log]
-    date = relative
-    graphColors = black,red,green
-[format]
-    pretty = format:%C(auto,yellow)%h%C(auto,magenta)% %C(auto,blue)%>(16,trunc)%ad %C(auto,green)%<(16,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
+[column]
+    ui = auto
+[commit]
+    verbose = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
 [filter "lfs"]
     process = git-lfs filter-process
     required = true
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
+[format]
+    pretty = format:%C(auto,yellow)%h%C(auto,magenta)% %C(auto,blue)%>(16,trunc)%ad %C(auto,green)%<(16,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
+[init]
+    defaultBranch = main
+[help]
+    autocorrect = prompt
+[log]
+    date = relative
+    graphColors = black,red,green
+[merge]
+    conflictstyle = zdiff3
+[pull]
+    rebase = true
+[push]
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+[rerere]
+    enabled = true
+    autoupdate = true
+[tag]
+    sort = version:refname
