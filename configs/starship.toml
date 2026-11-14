@@ -52,7 +52,7 @@ disabled = true
 truncation_length = 5
 
 [docker_context]
-format = "via [🐋 $context](blue bold)"
+format = "via [🐋 $context](blue bold) "
 
 [dotnet]
 disabled = true
@@ -61,9 +61,6 @@ disabled = true
 disabled = true
 
 [elm]
-disabled = true
-
-[env_var]
 disabled = true
 
 [erlang]
@@ -98,7 +95,7 @@ disabled = true
 disabled = true
 
 [jobs]
-symbol = "+ "
+symbol = "+"
 
 [julia]
 disabled = true
@@ -112,10 +109,12 @@ format = "with $indicator"
 unknown_indicator = ""
 disabled = false
 
+[status]
+disabled = true
+
 [time]
 format = "[$time]($style) "
-time_format = "%R"
-use_12hr = true
+time_format = "%-I:%M %p"
 disabled = false
 
 [shlvl]
