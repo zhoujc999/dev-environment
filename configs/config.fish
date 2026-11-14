@@ -11,19 +11,45 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # ---------- Interactive only ----------
 if status is-interactive
-    function ls --wraps eza; command eza -la --group-directories-first $argv; end
-    function cat --wraps batcat; command batcat $argv; end
-    function vim --wraps fresh; command fresh $argv; end
-    function grep --wraps rg; command rg $argv; end
-    function find --wraps fdfind; command fdfind $argv; end
-    function mv; command mv -i $argv; end
-    function cp; command cp -i $argv; end
-    function rm; command rm -I $argv; end
-    function cs --wraps cd; cd $argv && ls; end
-    function ds; cd .. && ls; end
+    function ls --wraps eza
+        command eza -la --group-directories-first $argv
+    end
 
-    starship init fish | source
+    function cat --wraps bat
+        command bat $argv
+    end
+
+    function vim --wraps fresh
+        command fresh $argv
+    end
+
+    function grep --wraps rg
+        command rg $argv
+    end
+
+    function find --wraps fd
+        command fd $argv
+    end
+
+    function mv
+        command mv -i $argv
+    end
+
+    function cp
+        command cp -i $argv
+    end
+
+    function rm
+        command rm -I $argv
+    end
+
+    function cs --wraps cd
+        cd $argv && ls
+    end
+
+    function ds
+        cd .. && ls
+    end
+
+    starship init fish | source
 end
-fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell fish | source
-
-
