@@ -1,65 +1,65 @@
 {
-  "auto_attach": false,
-  "editor": {
-    "mouse_hover_enabled": true,
-    "scroll_offset": 1,
-    "indentation_guide": "all",
-    "whitespace_spaces_trailing": true
-  },
-  "theme": "builtin://gruvbox",
-  "version": 3,
-  "locale": "en",
-  "plugins": {
-    "orchestrator": {
-      "enabled": true,
-      "settings": {
-        "autoOpenDock": "never",
-        "defaultView": "compact",
-        "showAllWorktrees": false,
-        "showEmptyWorkspaces": true,
-        "notifications": "all",
-        "notifySound": false
-      }
-    },
-    "welcome_screen": {
-      "enabled": true,
-      "settings": {
-        "showOnStartup": true
-      }
-    },
-    "vi_mode": {
-      "enabled": true,
-      "settings": {
-        "autoStart": true,
-        "arrowKeys": true,
-        "searchWordUnderCursor": true
-      }
-    }
-  },
-  "lsp": {
-    "python": [
-      {
-        "command": "pyrefly",
-        "args": ["lsp"],
-        "auto_start": true,
-        "root_markers": ["pyrefly.toml", "pyproject.toml", "setup.py", "setup.cfg", ".git"]
-      }
-    ],
-    "typescript": [
-      {
-        "command": "tsc",
-        "args": ["--lsp", "--stdio"],
-        "auto_start": true,
-        "language_id_overrides": { "tsx": "typescriptreact" }
-      }
-    ],
-    "javascript": [
-      {
-        "command": "tsc",
-        "args": ["--lsp", "--stdio"],
-        "auto_start": true,
-        "language_id_overrides": { "jsx": "javascriptreact" }
-      }
-    ]
-  }
+  "auto_attach": false,
+  "editor": {
+    "mouse_hover_enabled": true,
+    "scroll_offset": 1,
+    "indentation_guide": "all",
+    "whitespace_spaces_trailing": true
+  },
+  "theme": "builtin://gruvbox",
+  "version": 3,
+  "locale": "en",
+  "plugins": {
+    "orchestrator": {
+      "enabled": true,
+      "settings": {
+        "autoOpenDock": "never",
+        "defaultView": "compact",
+        "showAllWorktrees": false,
+        "showEmptyWorkspaces": true,
+        "notifications": "all",
+        "notifySound": false
+      }
+    },
+    "welcome_screen": {
+      "enabled": true,
+      "settings": {
+        "showOnStartup": true
+      }
+    },
+    "vi_mode": {
+      "enabled": true,
+      "settings": {
+        "autoStart": true,
+        "arrowKeys": true,
+        "searchWordUnderCursor": true
+      }
+    }
+  },
+  "lsp": {
+    "python": [
+      {
+        "command": "pyrefly",
+        "args": ["lsp"],
+        "auto_start": true,
+        "root_markers": ["pyrefly.toml", "pyproject.toml", "setup.py", "setup.cfg", ".git"]
+      }
+    ],
+    "typescript": [
+      {
+        "command": "typescript-language-server",
+        "args": ["--stdio"],
+        "auto_start": true,
+        "language_id_overrides": { "tsx": "typescriptreact" }
+      }
+    ],
+    "javascript": [
+      {
+        "command": "typescript-language-server",
+        "args": ["--stdio"],
+        "auto_start": true,
+        "language_id_overrides": { "jsx": "javascriptreact" }
+      }
+    ]
+  }
 }
