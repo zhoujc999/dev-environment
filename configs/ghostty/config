@@ -1,0 +1,67 @@
+# Ghostty config. Docs: https://ghostty.org/docs/config
+# All options with docs: ghostty +show-config --default --docs
+# Reload while running: Cmd+Shift+,
+
+# ==========================
+# Font
+# ==========================
+# The installed Fira build is the Nerd Font one ("Fira Code" doesn't exist on this machine).
+font-family = FiraCode Nerd Font Mono
+font-size = 14
+font-feature = calt
+font-feature = liga
+adjust-cell-height = 10%
+
+# ==========================
+# Colors: Gruvbox, following macOS light/dark appearance
+# ==========================
+theme = light:Gruvbox Light,dark:Gruvbox Dark
+
+# ==========================
+# Cursor (blinks by default)
+# ==========================
+cursor-style = block
+
+# Keep the block cursor at the prompt (shell integration would switch it to a bar),
+# and make SSH sessions work on hosts without Ghostty's terminfo.
+shell-integration-features = no-cursor,ssh-env,ssh-terminfo
+
+# ==========================
+# Keyboard
+# ==========================
+# Left Option acts as Alt (fish: Alt+arrows, Alt+E, Alt+S); right Option still types special characters.
+macos-option-as-alt = left
+
+# Drop-down terminal from any app (needs Accessibility permission).
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+
+# Cmd+K clears twice. Ghostty bug: at a prompt, clear_screen wipes scrollback and then
+# pushes the visible screen back into it (ghostty-org/ghostty discussion #10288,
+# fix PR #15056 closed unmerged). A second clear_screen removes the leftover screen.
+keybind = cmd+k=clear_screen
+keybind = chain=clear_screen
+
+# ==========================
+# Window
+# ==========================
+window-padding-x = 10
+window-padding-y = 8
+window-padding-balance = true
+window-save-state = always
+
+# ==========================
+# Mouse / clipboard
+# ==========================
+mouse-hide-while-typing = false
+copy-on-select = clipboard
+
+# ==========================
+# Notifications (silent)
+# ==========================
+# Notify when a command running 10s+ finishes in a window you're not looking at.
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = bell,notify
+notify-on-command-finish-after = 10s
+
+# Bell never makes sound: just bounces the dock icon and adds 🔔 to the tab title.
+bell-features = no-system,no-audio
