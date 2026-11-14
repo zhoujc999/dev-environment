@@ -1,39 +1,29 @@
-function ls --wraps eza
-    command eza -la --color=auto --group-directories-first $argv
+# fish is from the official .pkg (/usr/local), so it doesn't know Homebrew's completion dir
+contains /opt/homebrew/share/fish/vendor_completions.d $fish_complete_path
+or set -p fish_complete_path /opt/homebrew/share/fish/vendor_completions.d
+
+set -gx EDITOR fresh
+set -gx VISUAL fresh
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# ---------- Interactive only ----------
+if status is-interactive
+    function ls --wraps eza; command eza -la --group-directories-first $argv; end
+    function cat --wraps batcat; command batcat $argv; end
+    function vim --wraps fresh; command fresh $argv; end
+    function grep --wraps rg; command rg $argv; end
+    function find --wraps fdfind; command fdfind $argv; end
+    function mv; command mv -i $argv; end
+    function cp; command cp -i $argv; end
+    function rm; command rm -I $argv; end
+    function cs --wraps cd; cd $argv && ls; end
+    function ds; cd .. && ls; end
+
+    starship init fish | source
 end
+fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell fish | source
 
-function vim --wraps nvim
-    command nvim $argv
-end
 
-function cat --wraps batcat
-    command batcat $argv
-end
-
-function grep --wraps rg
-    command rg $argv
-end
-
-function find --wraps fdfind
-    command fdfind $argv
-end
-
-function cs --wraps ls
-    cd $argv && ls
-end
-
-function ds --wraps ls
-    cd .. && ls
-end
-
-function mv --wraps mv
-    command mv -i $argv
-end
-
-function rm --wraps rm
-    command rm -I $argv
-end
-
-contains /home/$USER/.local/bin/ $fish_user_paths; or set -Ua fish_user_paths /home/$USER/.local/bin/
-
-starship init fish | source
