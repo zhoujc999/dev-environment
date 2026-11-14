@@ -2,63 +2,63 @@
     email = {email}
     name = {name}
 [branch]
-    sort = -committerdate
+    sort = -committerdate
 [core]
-	fsmonitor = true
-	untrackedCache = true
+    fsmonitor = true
+    untrackedCache = true
 [diff]
-    algorithm = histogram
-    colorMoved = plain
-    mnemonicPrefix = true
-    renames = true
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
 [color]
-    ui = auto
+    ui = auto
 [color "branch"]
-    current = yellow bold
-    local = green bold
-    remote = cyan bold
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 [color "status"]
-    added = green bold
-    changed = yellow bold
-    untracked = red bold
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
 [column]
-    ui = auto
+    ui = auto
 [commit]
-    verbose = true
+    verbose = true
 [fetch]
-    prune = true
-    pruneTags = true
-    all = true
+    prune = true
+    pruneTags = true
+    all = true
 [pretty]
-    compact = tformat:%C(auto,yellow)%h %C(auto,blue)%>(16,trunc)%ad %C(auto,green)%<(16,trunc)%aN %C(auto,reset)%s%C(auto,red)% gD% D
+    compact = tformat:%C(auto,yellow)%h %C(auto,blue)%>(16,trunc)%ad %C(auto,green)%<(16,trunc)%aN %C(auto,reset)%s%C(auto,red)% gD% D
 [init]
-    defaultBranch = main
+    defaultBranch = main
 [help]
-    autocorrect = prompt
+    autocorrect = prompt
 [log]
-    date = relative
+    date = relative
 [merge]
-    conflictstyle = zdiff3
+    conflictstyle = zdiff3
 [pull]
-    rebase = true
+    rebase = true
 [push]
-    default = simple
-    autoSetupRemote = true
-    followTags = true
+    default = simple
+    autoSetupRemote = true
+    followTags = true
 [rerere]
-    enabled = true
-    autoupdate = true
+    enabled = true
+    autoupdate = true
 [tag]
-    sort = version:refname
+    sort = version:refname
 [format]
-	pretty = compact
+    pretty = compact
 [rebase]
-	autoStash = true
-	updateRefs = true
-	autoSquash = true
+    autoStash = true
+    updateRefs = true
+    autoSquash = true
